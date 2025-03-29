@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경희언어심리지원센터</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mint-color: #98D8C6;
+            --mint-dark: #7BC4B0;
+            --mint-light: #B4E3D7;
+            --mint-gradient: linear-gradient(135deg, var(--mint-light), var(--mint-color));
+            --text-dark: #2C3E50;
+            --text-light: #666666;
+            --background-light: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 15px;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom right, transparent 49%, var(--mint-light) 50%);
+            opacity: 0.4;
+        }
+
+        .section-divider-reverse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to top left, transparent 49%, var(--mint-light) 50%);
+            opacity: 0.4;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--mint-gradient);
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 2rem;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .brand-emoji {
+            font-size: 1.8rem;
+            margin-right: 0.3rem;
+            transition: var(--transition);
+            color: var(--mint-color);
+        }
+
+        .brand-logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .brand-logo svg path {
+            fill: var(--mint-color);
+            transition: var(--transition);
+        }
+
+        .brand-logo:hover svg path {
+            fill: var(--mint-dark);
+        }
+
+        .brand-logo:hover .brand-emoji {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .brand-text-container {
+            display: inline-flex;
+            align-items: baseline;
+        }
+
+        .brand-text.primary {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--mint-color);
+        }
+
+        .brand-text.secondary {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--mint-dark);
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin: 0 1rem;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+
+        .nav-link:hover {
+            color: var(--mint-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--mint-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .language-select {
+            padding: 0.4rem 1.2rem;
+            border: 1.5px solid var(--mint-color);
+            border-radius: 25px;
+            background-color: var(--white);
+            color: var(--mint-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-select:hover {
+            background-color: var(--mint-light);
+            border-color: var(--mint-dark);
+            transform: translateY(-1px);
+        }
+
+        .language-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(152, 216, 198, 0.3);
+        }
+
+        [lang] {
+            display: none;
+        }
+
+        [lang="ko"] {
+            display: block;
+        }
+
+        .main-section {
+            padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: var(--mint-gradient);
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 180px 0 100px;
+            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(152, 216, 198, 0.95), rgba(123, 196, 176, 0.9));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-mint {
+            background-color: var(--mint-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-mint:hover {
+            background-color: var(--mint-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: var(--white);
+        }
+
+        .btn-outline-mint {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline-mint:hover {
+            background-color: var(--white);
+            color: var(--mint-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+        }
+
+        .about-section {
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: var(--mint-gradient);
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-experience .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            display: block;
+        }
+
+        .about-experience .text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .about-feature {
+            background-color: var(--background-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .about-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-feature i {
+            font-size: 2rem;
+            color: var(--mint-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-feature h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-feature p {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .stats-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stats-icon {
+            font-size: 2.5rem;
+            color: var(--mint-color);
+            margin-bottom: 1rem;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .about-experience {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px;
+            }
+
+            .about-content {
+                margin-top: 2rem;
+            }
+        }
+
+        #services {
+            background-color: var(--background-light);
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .review-section {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            position: relative;
+            padding: 120px 0;
+        }
+
+        .counseling-section {
+            background-color: var(--white);
+            position: relative;
+            padding: 120px 0;
+        }
+
+        .counseling-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-control {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--mint-color);
+            box-shadow: 0 0 0 0.2rem rgba(152, 216, 198, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-check {
+            margin: 1rem 0;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--mint-color);
+            border-color: var(--mint-color);
+        }
+
+        .counseling-info {
+            background: var(--mint-gradient);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            color: var(--white);
+        }
+
+        .counseling-info h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .counseling-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .counseling-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .counseling-info i {
+            font-size: 1.2rem;
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem;
+            height: 100%;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .feature-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card .card-title {
+            color: var(--text-dark);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-card .card-text {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .review-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 1rem;
+        }
+
+        [lang] {
+            display: none;
+        }
+
+        [lang="ko"] {
+            display: block;
+        }
+
+        .review-text [lang],
+        .review-author [lang] {
+            display: none;
+        }
+
+        .review-text [lang="ko"],
+        .review-author [lang="ko"] {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="#">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 원형 배경 -->
+                    <circle cx="50" cy="50" r="45" fill="#FFE5E0"/>
+                    <!-- 얼굴 윤곽 -->
+                    <path d="M35 35 C35 35, 50 30, 65 35 C75 40, 75 60, 65 65 C50 70, 35 70, 35 65 C25 60, 25 40, 35 35" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                    <!-- 눈 -->
+                    <circle cx="43" cy="48" r="2" fill="#2C3E50"/>
+                    <circle cx="57" cy="48" r="2" fill="#2C3E50"/>
+                    <!-- 머리카락 -->
+                    <path d="M35 38 C35 38, 50 33, 65 38" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                    <!-- 말풍선 -->
+                    <path d="M75 15 C85 15, 90 20, 90 30 C90 40, 85 45, 75 45 C65 45, 60 40, 60 30 C60 20, 65 15, 75 15" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                    <path d="M65 40 L60 50 L68 42" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                    <!-- 말풍선 안의 점들 -->
+                    <circle cx="70" cy="30" r="2" fill="#2C3E50"/>
+                    <circle cx="75" cy="30" r="2" fill="#2C3E50"/>
+                    <circle cx="80" cy="30" r="2" fill="#2C3E50"/>
+                </svg>
+                <div class="brand-text-container">
+                    <span class="brand-text primary">경희</span>
+                    <span class="brand-text secondary">언어심리지원센터</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <span lang="ko">홈</span>
+                            <span lang="en">Home</span>
+                            <span lang="ja">ホーム</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <span lang="ko">센터소개</span>
+                            <span lang="en">About</span>
+                            <span lang="ja">センター紹介</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">
+                            <span lang="ko">프로그램</span>
+                            <span lang="en">Programs</span>
+                            <span lang="ja">プログラム</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">
+                            <span lang="ko">상담후기</span>
+                            <span lang="en">Reviews</span>
+                            <span lang="ja">カウンセリング後記</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#counseling">
+                            <span lang="ko">상담예약</span>
+                            <span lang="en">Appointment</span>
+                            <span lang="ja">予約</span>
+                        </a>
+                    </li>
+                </ul>
+                <select class="language-select" onchange="changeLanguage(this.value)">
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 섹션 -->
+    <section class="hero-section" id="home">
+        <div class="hero-background">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-aos="fade-up">
+                        <span lang="ko">마음의 성장을 함께하는<br>경희언어심리지원센터</span>
+                        <span lang="en">Growing Together<br>Kyung-hee Psychology Center</span>
+                        <span lang="ja">心の成長を共に<br>キョンヒ言語心理支援センター</span>
+                    </h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        <span lang="ko">전문적인 상담과 치료로 더 나은 미래를 만들어갑니다</span>
+                        <span lang="en">Creating a better future through professional counseling and therapy</span>
+                        <span lang="ja">専門的なカウンセリングと治療で、より良い未来を創造します</span>
+                    </p>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#counseling" class="btn btn-mint">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            <span lang="ko">상담 예약하기</span>
+                            <span lang="en">Book Appointment</span>
+                            <span lang="ja">予約する</span>
+                        </a>
+                        <a href="#about" class="btn btn-outline-mint">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <span lang="ko">센터 소개</span>
+                            <span lang="en">About Us</span>
+                            <span lang="ja">センター紹介</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 센터소개 섹션 -->
+    <section class="about-section section-padding" id="about">
+        <div class="section-divider-reverse"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span lang="ko">센터소개</span>
+                <span lang="en">About Us</span>
+                <span lang="ja">センター紹介</span>
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">
+                <span lang="ko">전문성과 따뜻한 마음으로 함께하는<br>경희언어심리지원센터입니다</span>
+                <span lang="en">We are Kyung-hee Psychology Center<br>Professional Care with a Warm Heart</span>
+                <span lang="ja">専門性と温かい心で共に歩む<br>キョンヒ言語心理支援センターです</span>
+            </p>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                             alt="센터 내부" class="img-fluid rounded-lg shadow-lg">
+                        <div class="about-experience">
+                            <span class="number">10+</span>
+                            <span class="text">전문상담사<br>보유</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-content">
+                        <h3 class="mb-4">
+                            <span lang="ko">전문 상담사들과 함께하는 치료 여정</span>
+                            <span lang="en">A Therapeutic Journey with Professional Counselors</span>
+                            <span lang="ja">専門カウンセラーと共に歩む治療の旅</span>
+                        </h3>
+                        <p class="mb-4">
+                            <span lang="ko">경희언어심리지원센터는 언어치료와 심리상담 분야에서 10여명의 전문 상담사들이 함께하는 전문 치료기관입니다. 개인별 맞춤 치료 프로그램을 통해 내담자의 성장을 돕고 있습니다.</span>
+                            <span lang="en">Kyung-hee Psychology Center is a specialized treatment institution with 10 professional counselors in speech therapy and psychological counseling. We help clients grow through personalized treatment programs.</span>
+                            <span lang="ja">キョンヒ言語心理支援センターは、言語療法と心理カウンセリング分野で10名以上の専門カウンセラーが在籍する専門治療機関です。個別カスタマイズされた治療プログラムを通じて、クライアントの成長をサポートしています。</span>
+                        </p>
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6">
+                                <div class="about-feature">
+                                    <i class="fas fa-certificate"></i>
+                                    <h4>
+                                        <span lang="ko">전문자격보유</span>
+                                        <span lang="en">Professional Certification</span>
+                                        <span lang="ja">専門資格保有</span>
+                                    </h4>
+                                    <p>
+                                        <span lang="ko">언어치료사, 심리상담사 등 분야별 전문자격 보유</span>
+                                        <span lang="en">Professional qualifications in speech therapy and counseling</span>
+                                        <span lang="ja">言語療法士、心理カウンセラーなど分野別の専門資格保有</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-feature">
+                                    <i class="fas fa-users"></i>
+                                    <h4>
+                                        <span lang="ko">맞춤형 치료</span>
+                                        <span lang="en">Personalized Treatment</span>
+                                        <span lang="ja">カスタマイズ治療</span>
+                                    </h4>
+                                    <p>
+                                        <span lang="ko">개인별 특성을 고려한 맞춤형 치료 프로그램</span>
+                                        <span lang="en">Customized treatment programs considering individual characteristics</span>
+                                        <span lang="ja">個人の特性を考慮したカスタマイズ治療プログラム</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-feature">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>
+                                        <span lang="ko">체계적 관리</span>
+                                        <span lang="en">Systematic Management</span>
+                                        <span lang="ja">体系的な管理</span>
+                                    </h4>
+                                    <p>
+                                        <span lang="ko">정기적인 평가와 피드백을 통한 체계적 관리</span>
+                                        <span lang="en">Systematic management through regular evaluation and feedback</span>
+                                        <span lang="ja">定期的な評価とフィードバックによる体系的な管理</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="about-feature">
+                                    <i class="fas fa-heart"></i>
+                                    <h4>
+                                        <span lang="ko">신뢰와 안정</span>
+                                        <span lang="en">Trust and Stability</span>
+                                        <span lang="ja">信頼と安定</span>
+                                    </h4>
+                                    <p>
+                                        <span lang="ko">편안하고 안정적인 치료 환경 제공</span>
+                                        <span lang="en">Providing comfortable and stable treatment environment</span>
+                                        <span lang="ja">快適で安定した治療環境の提供</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#counseling" class="btn btn-mint">
+                            <i class="fas fa-arrow-right me-2"></i>
+                            <span lang="ko">무료상담 신청하기</span>
+                            <span lang="en">Request Free Consultation</span>
+                            <span lang="ja">無料相談を申し込む</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="stats-number">10+</h3>
+                        <p class="stats-text">
+                            <span lang="ko">전문 상담사</span>
+                            <span lang="en">Professional Counselors</span>
+                            <span lang="ja">専門カウンセラー</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-smile-beam"></i>
+                        </div>
+                        <h3 class="stats-number">1,000+</h3>
+                        <p class="stats-text">
+                            <span lang="ko">치료 사례</span>
+                            <span lang="en">Treatment Cases</span>
+                            <span lang="ja">治療事例</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="stats-number">15+</h3>
+                        <p class="stats-text">
+                            <span lang="ko">전문 자격증</span>
+                            <span lang="en">Professional Certifications</span>
+                            <span lang="ja">専門資格</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="stats-number">98%</h3>
+                        <p class="stats-text">
+                            <span lang="ko">고객 만족도</span>
+                            <span lang="en">Client Satisfaction</span>
+                            <span lang="ja">顧客満足度</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 서비스 섹션 -->
+    <section class="py-5" id="services">
+        <div class="section-divider-reverse"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span lang="ko">전문 프로그램</span>
+                <span lang="en">Our Programs</span>
+                <span lang="ja">専門プログラム</span>
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">
+                <span lang="ko">개인별 맞춤 치료와 상담으로 최상의 결과를 제공합니다</span>
+                <span lang="en">We provide the best results through personalized treatment and counseling</span>
+                <span lang="ja">個別カスタマイズされた治療とカウンセリングで最高の結果を提供します</span>
+            </p>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">💭</div>
+                            <h3 class="card-title">
+                                <span lang="ko">언어치료</span>
+                                <span lang="en">Speech Therapy</span>
+                                <span lang="ja">言語療法</span>
+                            </h3>
+                            <p class="card-text">
+                                <span lang="ko">발달장애, 언어발달지연, 조음음운장애 등 다양한 언어문제에 대한 전문적인 치료 프로그램을 제공합니다.</span>
+                                <span lang="en">We provide professional treatment programs for various language issues including developmental disorders, language delays, and articulation disorders.</span>
+                                <span lang="ja">発達障害、言語発達遅延、調音音韻障害など、様々な言語の問題に対する専門的な治療プログラムを提供します。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🧠</div>
+                            <h3 class="card-title">
+                                <span lang="ko">심리상담</span>
+                                <span lang="en">Psychological Counseling</span>
+                                <span lang="ja">心理カウンセリング</span>
+                            </h3>
+                            <p class="card-text">
+                                <span lang="ko">우울, 불안, ADHD, 학교부적응 등 다양한 심리적 어려움에 대한 전문 상담을 제공합니다.</span>
+                                <span lang="en">We provide professional counseling for various psychological difficulties such as depression, anxiety, ADHD, and school maladjustment.</span>
+                                <span lang="ja">うつ病、不安、ADHD、学校不適応など、様々な心理的な困難に対する専門カウンセリングを提供します。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">👥</div>
+                            <h3 class="card-title">
+                                <span lang="ko">그룹프로그램</span>
+                                <span lang="en">Group Program</span>
+                                <span lang="ja">グループプログラム</span>
+                            </h3>
+                            <p class="card-text">
+                                <span lang="ko">또래관계 증진, 사회성 발달, 감정조절 능력 향상을 위한 그룹 활동 프로그램을 운영합니다.</span>
+                                <span lang="en">We operate group activity programs to improve peer relationships, social development, and emotional control abilities.</span>
+                                <span lang="ja">仲間関係の向上、社会性の発達、感情コントロール能力の向上のためのグループ活動プログラムを運営します。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🎨</div>
+                            <h3 class="card-title">
+                                <span lang="ko">미술치료</span>
+                                <span lang="en">Art Therapy</span>
+                                <span lang="ja">アートセラピー</span>
+                            </h3>
+                            <p class="card-text">
+                                <span lang="ko">표현적 미술활동을 통해 감정표현, 자아정체성 확립, 스트레스 해소를 도와주는 치료 프로그램입니다.</span>
+                                <span lang="en">A therapeutic program that helps express emotions, establish self-identity, and relieve stress through expressive art activities.</span>
+                                <span lang="ja">表現的なアート活動を通じて、感情表現、自己アイデンティティの確立、ストレス解消をサポートする治療プログラムです。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🏖️</div>
+                            <h3 class="card-title">
+                                <span lang="ko">모래치료</span>
+                                <span lang="en">Sand Therapy</span>
+                                <span lang="ja">砂療法</span>
+                            </h3>
+                            <p class="card-text">
+                                <span lang="ko">모래와 미니어처를 활용한 창작활동으로 무의식적 심리상태를 표현하고 치유하는 치료 프로그램입니다.</span>
+                                <span lang="en">A therapeutic program that expresses and heals unconscious psychological states through creative activities using sand and miniatures.</span>
+                                <span lang="ja">砂とミニチュアを活用した創作活動で、無意識の心理状態を表現し、癒やす治療プログラムです。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 상담후기 섹션 -->
+    <section class="review-section" id="reviews">
+        <div class="section-divider-reverse"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span lang="ko">상담후기</span>
+                <span lang="en">Reviews</span>
+                <span lang="ja">カウンセリング後記</span>
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">
+                <span lang="ko">실제 내담자들의 경험을 들려드립니다</span>
+                <span lang="en">Real experiences from our clients</span>
+                <span lang="ja">実際のクライアントの体験談をご紹介します</span>
+            </p>
+            <div class="review-slider" data-aos="fade-up">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"아이가 말을 더듬는 증상으로 걱정이 많았는데, 3개월간의 치료 후 많이 호전되었습니다. 선생님께서 아이의 눈높이에 맞춰 즐겁게 치료해주셔서 아이도 매우 즐겁게 참여했어요."</span>
+                                    <span lang="en">"I was worried about my child's stuttering, but after 3 months of treatment, there was significant improvement. The therapist made the treatment enjoyable by matching the child's level, so my child participated very happily."</span>
+                                    <span lang="ja">"子供のどもりの症状で心配でしたが、3ヶ月間の治療後、大きく改善されました。先生が子供の目線に合わせて楽しく治療してくださったので、子供もとても楽しく参加できました。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">김○○ (초등학교 2학년 학부모)</span>
+                                    <span lang="en">Kim ○○ (2nd Grade Elementary School Parent)</span>
+                                    <span lang="ja">キム○○（小学校2年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"ADHD로 진단받은 우리 아이가 집중력도 좋아지고 감정조절도 잘하게 되었어요. 특히 그룹활동을 통해 친구들과 어울리는 법을 배우면서 많이 성장했습니다."</span>
+                                    <span lang="en">"My child diagnosed with ADHD has improved in concentration and emotional control. Particularly through group activities, they've grown a lot while learning how to interact with friends."</span>
+                                    <span lang="ja">"ADHDと診断された我が子が、集中力も良くなり、感情コントロールもできるようになりました。特にグループ活動を通じて友達との関わり方を学びながら、大きく成長しました。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">박○○ (초등학교 4학년 학부모)</span>
+                                    <span lang="en">Park ○○ (4th Grade Elementary School Parent)</span>
+                                    <span lang="ja">パク○○（小学校4年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"발달지연으로 걱정이 많았는데, 꾸준한 치료와 상담으로 아이가 많이 좋아졌어요. 선생님들의 전문적이고 따뜻한 케어에 정말 감사드립니다."</span>
+                                    <span lang="en">"I was worried about developmental delays, but my child has improved significantly through consistent treatment and counseling. I'm truly grateful for the professional and warm care from the teachers."</span>
+                                    <span lang="ja">"発達遅延で心配でしたが、継続的な治療とカウンセリングで子供が大きく改善されました。先生方の専門的で温かいケアに本当に感謝しています。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">이○○ (미취학 아동 학부모)</span>
+                                    <span lang="en">Lee ○○ (Preschool Child Parent)</span>
+                                    <span lang="ja">イ○○（未就学児の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"언어발달이 또래보다 느려서 불안했는데, 6개월 정도 치료받으면서 아이의 어휘력이 풍부해지고 문장으로 대화할 수 있게 되었어요. 정말 감사합니다."</span>
+                                    <span lang="en">"I was anxious because my child's language development was slower than peers, but after about 6 months of treatment, their vocabulary has enriched and they can now communicate in sentences. Thank you so much."</span>
+                                    <span lang="ja">"言語発達が同年齢の子供より遅くて不安でしたが、6ヶ月ほど治療を受けて、子供の語彙力が豊かになり、文章で会話できるようになりました。本当にありがとうございます。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">최○○ (유치원생 학부모)</span>
+                                    <span lang="en">Choi ○○ (Kindergarten Student Parent)</span>
+                                    <span lang="ja">チェ○○（幼稚園児の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"학교생활 적응에 어려움을 겪던 아이가 상담을 통해 자신감을 찾았어요. 이제는 친구들과도 잘 어울리고 학교 가는 것을 즐거워합니다."</span>
+                                    <span lang="en">"My child who had difficulties adapting to school life found confidence through counseling. Now they get along well with friends and enjoy going to school."</span>
+                                    <span lang="ja">"学校生活への適応に困難を感じていた子供がカウンセリングを通じて自信を取り戻しました。今では友達ともよく付き合い、学校に行くのを楽しんでいます。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">정○○ (초등학교 3학년 학부모)</span>
+                                    <span lang="en">Jung ○○ (3rd Grade Elementary School Parent)</span>
+                                    <span lang="ja">チョン○○（小学校3年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"사회성 발달 프로그램을 통해 아이가 다른 친구들과 소통하는 법을 배웠어요. 집에서도 동생과 싸움이 줄어들고 배려하는 모습이 보여 기쁩니다."</span>
+                                    <span lang="en">"Through the social development program, my child learned how to communicate with other friends. I'm happy to see them being more considerate and having fewer fights with their younger sibling at home."</span>
+                                    <span lang="ja">"社会性発達プログラムを通じて、子供が他の友達とコミュニケーションを取る方法を学びました。家でも弟妹との喧嘩が減り、思いやりのある姿を見せてくれて嬉しいです。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">강○○ (초등학교 1학년 학부모)</span>
+                                    <span lang="en">Kang ○○ (1st Grade Elementary School Parent)</span>
+                                    <span lang="ja">カン○○（小学校1年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"자폐 스펙트럼 진단을 받고 힘들어했는데, 꾸준한 치료로 의사소통 능력이 많이 향상되었어요. 선생님들의 전문성과 따뜻한 마음에 깊이 감사드립니다."</span>
+                                    <span lang="en">"After receiving an autism spectrum diagnosis, we struggled, but with consistent treatment, communication skills have greatly improved. We are deeply grateful for the teachers' expertise and warm hearts."</span>
+                                    <span lang="ja">"自閉症スペクトラムと診断され苦労していましたが、継続的な治療でコミュニケーション能力が大きく向上しました。先生方の専門性と温かい心に深く感謝いたします。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">윤○○ (미취학 아동 학부모)</span>
+                                    <span lang="en">Yoon ○○ (Preschool Child Parent)</span>
+                                    <span lang="ja">ユン○○（未就学児の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"분노조절에 어려움이 있었던 아이가 감정조절 프로그램을 통해 많이 안정되었어요. 이제는 화가 날 때도 차분히 자신의 감정을 표현할 수 있게 되었습니다."</span>
+                                    <span lang="en">"My child who had difficulty with anger management has become much more stable through the emotion control program. Now they can calmly express their feelings even when angry."</span>
+                                    <span lang="ja">"怒りの制御が難しかった子供が、感情コントロールプログラムを通じて大分安定してきました。今では怒りを感じた時も落ち着いて自分の感情を表現できるようになりました。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">송○○ (초등학교 5학년 학부모)</span>
+                                    <span lang="en">Song ○○ (5th Grade Elementary School Parent)</span>
+                                    <span lang="ja">ソン○○（小学校5年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"쌍둥이 자녀들의 언어발달 차이로 고민이 많았는데, 개별 맞춤 치료를 통해 두 아이 모두 균형있게 발달할 수 있게 되었어요. 정말 감사합니다."</span>
+                                    <span lang="en">"I was worried about the language development differences between my twins, but through personalized treatment, both children have been able to develop in a balanced way. Thank you so much."</span>
+                                    <span lang="ja">"双子の言語発達の差で悩んでいましたが、個別カスタマイズ治療を通じて、二人とも均衡のとれた発達ができるようになりました。本当にありがとうございます。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">한○○ (미취학 아동 학부모)</span>
+                                    <span lang="en">Han ○○ (Preschool Child Parent)</span>
+                                    <span lang="ja">ハン○○（未就学児の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"청소년기 우울증으로 힘들어하던 아이가 상담을 통해 밝아졌어요. 이제는 자신의 꿈에 대해 이야기하고 미래를 계획하는 모습을 보여 정말 기쁩니다."</span>
+                                    <span lang="en">"My teenager who was struggling with depression has become brighter through counseling. I'm so happy to see them now talking about their dreams and planning for the future."</span>
+                                    <span lang="ja">"思春期のうつ病で苦しんでいた子供がカウンセリングを通じて明るくなりました。今では自分の夢について語り、将来を計画する姿を見せてくれて本当に嬉しいです。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">임○○ (중학생 학부모)</span>
+                                    <span lang="en">Lim ○○ (Middle School Student Parent)</span>
+                                    <span lang="ja">イム○○（中学生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="slider-nav slider-prev">❮</div>
+                <div class="slider-nav slider-next">❯</div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 상담예약 섹션 -->
+    <section class="counseling-section" id="counseling">
+        <div class="section-divider-reverse"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span lang="ko">상담예약</span>
+                <span lang="en">Book an Appointment</span>
+                <span lang="ja">カウンセリング予約</span>
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">
+                <span lang="ko">첫 상담은 무료입니다. 정확한 진단과 맞춤형 치료 계획을 제공해드립니다.</span>
+                <span lang="en">First consultation is free. We provide accurate diagnosis and personalized treatment plans.</span>
+                <span lang="ja">初回カウンセリングは無料です。正確な診断とカスタマイズされた治療計画を提供いたします。</span>
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="counseling-info">
+                        <h3>
+                            <span lang="ko">진료 안내</span>
+                            <span lang="en">Clinic Information</span>
+                            <span lang="ja">クリニック情報</span>
+                        </h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>
+                                        <span lang="ko">진료시간</span>
+                                        <span lang="en">Hours</span>
+                                        <span lang="ja">診療時間</span>
+                                    </strong><br>
+                                    <span lang="ko">평일: 09:00 - 18:00<br>토요일: 09:00 - 13:00<br>일요일/공휴일: 휴무</span>
+                                    <span lang="en">Weekdays: 09:00 - 18:00<br>Saturday: 09:00 - 13:00<br>Sunday/Holidays: Closed</span>
+                                    <span lang="ja">平日: 09:00 - 18:00<br>土曜日: 09:00 - 13:00<br>日曜日/祝日: 休診</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>주소</strong><br>
+                                    제주특별자치도 제주시 화북일동 2053-1<br>
+                                    3층
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>연락처</strong><br>
+                                    전화: 064-756-1010<br>
+                                    이메일: khc7942@naver.com<br>
+                                    카카오톡: @kyunghee
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.1234567890123!2d126.5684227!3d33.5187027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMxJzA3LjMiTiAxMjbCsDM0JzA2LjMiRQ!5e0!3m2!1sko!2skr!4v1234567890123!5m2!1sko!2skr" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-left">
+                    <div class="counseling-form">
+                        <form id="appointmentForm" action="mailto:khc7942@naver.com" method="post" enctype="text/plain">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">
+                                            <span lang="ko">이름</span>
+                                            <span lang="en">Name</span>
+                                            <span lang="ja">お名前</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">
+                                            <span lang="ko">연락처</span>
+                                            <span lang="en">Phone</span>
+                                            <span lang="ja">連絡先</span>
+                                        </label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <span lang="ko">이메일</span>
+                                    <span lang="en">Email</span>
+                                    <span lang="ja">メール</span>
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="preferredDate" class="form-label">
+                                    <span lang="ko">희망 상담일시</span>
+                                    <span lang="en">Preferred Date</span>
+                                    <span lang="ja">希望日時</span>
+                                </label>
+                                <input type="datetime-local" class="form-control" id="preferredDate" name="preferredDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="counselingType" class="form-label">
+                                    <span lang="ko">상담 유형</span>
+                                    <span lang="en">Consultation Type</span>
+                                    <span lang="ja">カウンセリング種類</span>
+                                </label>
+                                <select class="form-control" id="counselingType" name="counselingType" required>
+                                    <option value="">
+                                        <span lang="ko">선택해주세요</span>
+                                        <span lang="en">Please select</span>
+                                        <span lang="ja">選択してください</span>
+                                    </option>
+                                    <option value="language">
+                                        <span lang="ko">언어치료</span>
+                                        <span lang="en">Speech Therapy</span>
+                                        <span lang="ja">言語療法</span>
+                                    </option>
+                                    <option value="psychology">
+                                        <span lang="ko">심리상담</span>
+                                        <span lang="en">Psychological Counseling</span>
+                                        <span lang="ja">心理カウンセリング</span>
+                                    </option>
+                                    <option value="art">
+                                        <span lang="ko">미술치료</span>
+                                        <span lang="en">Art Therapy</span>
+                                        <span lang="ja">アートセラピー</span>
+                                    </option>
+                                    <option value="sand">
+                                        <span lang="ko">모래치료</span>
+                                        <span lang="en">Sand Therapy</span>
+                                        <span lang="ja">砂療法</span>
+                                    </option>
+                                    <option value="group">
+                                        <span lang="ko">그룹프로그램</span>
+                                        <span lang="en">Group Program</span>
+                                        <span lang="ja">グループプログラム</span>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">
+                                    <span lang="ko">상담 내용</span>
+                                    <span lang="en">Message</span>
+                                    <span lang="ja">相談内容</span>
+                                </label>
+                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="privacy" required>
+                                <label class="form-check-label" for="privacy">
+                                    <span lang="ko">개인정보 수집 및 이용에 동의합니다.</span>
+                                    <span lang="en">I agree to the collection and use of personal information.</span>
+                                    <span lang="ja">個人情報の収集及び利用に同意します。</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-mint w-100">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                <span lang="ko">상담 예약하기</span>
+                                <span lang="en">Book Appointment</span>
+                                <span lang="ja">予約する</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-info">
+                        <a class="footer-logo" href="#">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 원형 배경 -->
+                                <circle cx="50" cy="50" r="45" fill="#FFE5E0"/>
+                                <!-- 얼굴 윤곽 -->
+                                <path d="M35 35 C35 35, 50 30, 65 35 C75 40, 75 60, 65 65 C50 70, 35 70, 35 65 C25 60, 25 40, 35 35" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                                <!-- 눈 -->
+                                <circle cx="43" cy="48" r="2" fill="#2C3E50"/>
+                                <circle cx="57" cy="48" r="2" fill="#2C3E50"/>
+                                <!-- 머리카락 -->
+                                <path d="M35 38 C35 38, 50 33, 65 38" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                                <!-- 말풍선 -->
+                                <path d="M75 15 C85 15, 90 20, 90 30 C90 40, 85 45, 75 45 C65 45, 60 40, 60 30 C60 20, 65 15, 75 15" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                                <path d="M65 40 L60 50 L68 42" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                                <!-- 말풍선 안의 점들 -->
+                                <circle cx="70" cy="30" r="2" fill="#2C3E50"/>
+                                <circle cx="75" cy="30" r="2" fill="#2C3E50"/>
+                                <circle cx="80" cy="30" r="2" fill="#2C3E50"/>
+                            </svg>
+                            <span class="brand-text">경희언어심리지원센터</span>
+                        </a>
+                        <p class="mt-3">
+                            <span lang="ko">전문적인 언어치료와 심리상담을 통해<br>더 나은 미래를 만들어갑니다.</span>
+                            <span lang="en">Creating a better future through<br>professional speech therapy and counseling.</span>
+                            <span lang="ja">専門的な言語療法と心理カウンセリングを通じて<br>より良い未来を創造します。</span>
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-kakao"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4>
+                        <span lang="ko">바로가기</span>
+                        <span lang="en">Quick Links</span>
+                        <span lang="ja">クイックリンク</span>
+                    </h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#home">
+                                <span lang="ko">홈</span>
+                                <span lang="en">Home</span>
+                                <span lang="ja">ホーム</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about">
+                                <span lang="ko">센터소개</span>
+                                <span lang="en">About</span>
+                                <span lang="ja">センター紹介</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#services">
+                                <span lang="ko">프로그램</span>
+                                <span lang="en">Programs</span>
+                                <span lang="ja">プログラム</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#reviews">
+                                <span lang="ko">상담후기</span>
+                                <span lang="en">Reviews</span>
+                                <span lang="ja">カウンセリング後記</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#counseling">
+                                <span lang="ko">상담예약</span>
+                                <span lang="en">Appointment</span>
+                                <span lang="ja">予約</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h4>
+                        <span lang="ko">진료시간</span>
+                        <span lang="en">Hours</span>
+                        <span lang="ja">診療時間</span>
+                    </h4>
+                    <ul class="footer-hours">
+                        <li>
+                            <span>
+                                <span lang="ko">평일</span>
+                                <span lang="en">Weekdays</span>
+                                <span lang="ja">平日</span>
+                            </span>
+                            <span>09:00 - 18:00</span>
+                        </li>
+                        <li>
+                            <span>
+                                <span lang="ko">토요일</span>
+                                <span lang="en">Saturday</span>
+                                <span lang="ja">土曜日</span>
+                            </span>
+                            <span>09:00 - 13:00</span>
+                        </li>
+                        <li>
+                            <span>
+                                <span lang="ko">일요일/공휴일</span>
+                                <span lang="en">Sunday/Holidays</span>
+                                <span lang="ja">日曜日/祝日</span>
+                            </span>
+                            <span>
+                                <span lang="ko">휴무</span>
+                                <span lang="en">Closed</span>
+                                <span lang="ja">休診</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h4>
+                        <span lang="ko">연락처</span>
+                        <span lang="en">Contact</span>
+                        <span lang="ja">連絡先</span>
+                    </h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>064-756-1010</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>khc7942@naver.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>
+                                <span lang="ko">제주특별자치도 제주시 화북일동 2053-1<br>3층</span>
+                                <span lang="en">3F, 2053-1 Hwabuk-il-dong, Jeju-si<br>Jeju Special Self-Governing Province</span>
+                                <span lang="ja">済州特別自治道済州市化北一洞2053-1<br>3階</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <span lang="ko">&copy; 2024 경희언어심리지원센터. All rights reserved.</span>
+                            <span lang="en">&copy; 2024 Kyung-hee Psychology Center. All rights reserved.</span>
+                            <span lang="ja">&copy; 2024 キョンヒ言語心理支援センター. All rights reserved.</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>
+                            <a href="#">
+                                <span lang="ko">개인정보처리방침</span>
+                                <span lang="en">Privacy Policy</span>
+                                <span lang="ja">プライバシーポリシー</span>
+                            </a> |
+                            <a href="#">
+                                <span lang="ko">이용약관</span>
+                                <span lang="en">Terms of Service</span>
+                                <span lang="ja">利用規約</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .footer-section {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 5rem 0 0;
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .footer-logo .brand-emoji {
+            font-size: 2rem;
+        }
+
+        .footer-logo .brand-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--mint-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--mint-color);
+            padding-left: 5px;
+        }
+
+        .footer-hours {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-hours li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-contact i {
+            color: var(--mint-color);
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--mint-color);
+        }
+
+        @media (max-width: 768px) {
+            .footer-info {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                text-align: center;
+            }
+
+            .footer-bottom .text-md-end {
+                text-align: center !important;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[lang]').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll(`[lang="${lang}"]`).forEach(el => {
+                if (el.tagName.toLowerCase() === 'option') {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'inline-block';
+                }
+            });
+        }
+
+        // 상담후기 슬라이더 초기화
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.slider-next',
+                prevEl: '.slider-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+
+        // 스크롤시 네비게이션 바 스타일 변경
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 상담 예약 폼 제출
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 여기에 폼 제출 로직 추가
+            alert('상담 예약이 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            this.reset();
+        });
+
+        // 부드러운 스크롤 이동
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
+
