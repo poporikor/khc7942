@@ -509,21 +509,24 @@
             box-shadow: var(--shadow-md);
             height: 100%;
             transition: var(--transition);
-            margin: 0 auto;
+            margin: 0 15px;
+            max-width: calc(100% - 30px);
         }
 
         .swiper-container {
             width: 100%;
-            padding: 0 15px;
+            padding: 20px 40px;
+            overflow: hidden;
         }
 
         .swiper-wrapper {
-            width: 100%;
+            display: flex;
+            align-items: stretch;
         }
 
         .swiper-slide {
-            width: 100%;
             height: auto;
+            display: flex;
         }
 
         .slider-nav {
@@ -2137,15 +2140,19 @@
             breakpoints: {
                 576: {
                     slidesPerView: 1,
+                    spaceBetween: 20,
                 },
                 768: {
                     slidesPerView: 2,
+                    spaceBetween: 30,
                 },
                 1024: {
                     slidesPerView: 3,
+                    spaceBetween: 30,
                 },
                 1200: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
+                    spaceBetween: 30,
                 }
             },
             on: {
