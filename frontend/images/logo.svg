@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="60" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- 메인 그라데이션 -->
+        <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#98D8C6"/>
+            <stop offset="50%" style="stop-color:#7BC4B0"/>
+            <stop offset="100%" style="stop-color:#5BA997"/>
+        </linearGradient>
+    </defs>
+    
+    <!-- 로고 마크 -->
+    <g transform="translate(10, 5)">
+        <!-- 뇌의 좌측 반구 -->
+        <path d="M25 5
+                C20 5, 15 8, 15 15
+                C15 18, 12 20, 8 20
+                C4 20, 2 17, 2 14
+                C2 11, 4 9, 7 9
+                C7 6, 9 4, 12 4
+                C15 4, 17 6, 17 9
+                C19 7, 22 5, 25 5
+                Z"
+              fill="url(#mainGradient)"
+              stroke="#7BC4B0"
+              stroke-width="1.5"/>
+              
+        <!-- 뇌의 우측 반구 -->
+        <path d="M25 5
+                C28 5, 31 7, 33 9
+                C35 6, 37 4, 40 4
+                C43 4, 45 6, 45 9
+                C48 9, 50 11, 50 14
+                C50 17, 48 20, 44 20
+                C40 20, 37 18, 37 15
+                C37 8, 32 5, 27 5
+                Z"
+              fill="url(#mainGradient)"
+              stroke="#7BC4B0"
+              stroke-width="1.5"/>
+              
+        <!-- 뇌의 주름 패턴 -->
+        <path d="M15 12 Q20 10, 25 12
+                M27 12 Q32 10, 37 12
+                M12 16 Q16 14, 20 16
+                M32 16 Q36 14, 40 16"
+              stroke="white"
+              stroke-width="1.5"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.7"/>
+    </g>
+    
+    <!-- 텍스트 그룹 -->
+    <g transform="translate(65, 0)">
+        <!-- 메인 텍스트 -->
+        <text x="0" y="35" 
+              font-family="'Pretendard', 'Noto Sans KR', sans-serif"
+              font-size="24"
+              font-weight="700"
+              letter-spacing="-0.5">
+            <tspan fill="#7BC4B0">경희</tspan><tspan fill="#666" font-weight="500">언어심리지원센터</tspan>
+        </text>
+        
+        <!-- 영문 서브텍스트 -->
+        <text x="2" y="52" 
+              font-family="'Pretendard', sans-serif"
+              font-size="12"
+              font-weight="500"
+              letter-spacing="1"
+              fill="#98D8C6">
+            PSYCHOLOGY CENTER
+        </text>
+    </g>
+</svg> 
