@@ -118,15 +118,15 @@
         }
 
         .brand-emoji {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-right: 0.3rem;
             transition: var(--transition);
             color: var(--mint-color);
         }
 
         .brand-logo svg {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             margin-right: 0.3rem;
             transition: var(--transition);
         }
@@ -154,13 +154,13 @@
         }
 
         .brand-text.primary {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--mint-color);
         }
 
         .brand-text.secondary {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: var(--mint-dark);
         }
@@ -638,6 +638,55 @@
         .review-text [lang="ko"],
         .review-author [lang="ko"] {
             display: block;
+        }
+
+        /* 모바일 메뉴 스타일 수정 */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                display: block !important;
+                background-color: var(--white);
+                padding: 1rem;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow-sm);
+                margin-top: 1rem;
+            }
+
+            .navbar-nav {
+                flex-direction: row !important;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                margin: 0.2rem 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem 1rem !important;
+                margin: 0;
+                border-radius: 20px;
+                background-color: var(--background-light);
+                font-size: 0.9rem;
+            }
+
+            .nav-link:hover {
+                background-color: var(--mint-light);
+                color: var(--white);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .navbar-toggler {
+                display: none;
+            }
+
+            .language-select {
+                margin-top: 0;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
