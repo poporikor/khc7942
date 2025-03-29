@@ -487,21 +487,19 @@
             position: relative;
             padding: 120px 0;
             width: 100%;
-            overflow: hidden;
         }
 
         .review-section .container {
             max-width: 1320px;
             margin: 0 auto;
             padding: 0 15px;
+            width: 100%;
         }
 
         .review-slider {
             position: relative;
             padding: 0;
             width: 100%;
-            max-width: 100%;
-            overflow: hidden;
         }
 
         .review-card {
@@ -511,24 +509,21 @@
             box-shadow: var(--shadow-md);
             height: 100%;
             transition: var(--transition);
-            max-width: 100%;
             margin: 0 auto;
         }
 
         .swiper-container {
             width: 100%;
-            max-width: 100%;
             padding: 0 15px;
         }
 
         .swiper-wrapper {
             width: 100%;
-            max-width: 100%;
         }
 
         .swiper-slide {
             width: 100%;
-            max-width: 100%;
+            height: auto;
         }
 
         .slider-nav {
@@ -569,6 +564,11 @@
             
             .swiper-container {
                 padding: 0 10px;
+            }
+
+            .slider-nav {
+                width: 35px;
+                height: 35px;
             }
         }
 
@@ -1530,6 +1530,48 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"학습장애로 인해 학업에 어려움을 겪던 아이가 난독치료를 통해 읽기와 쓰기 능력이 크게 향상되었어요. 이제는 자신감을 가지고 학습에 임할 수 있게 되었습니다."</span>
+                                    <span lang="en">"My child who was struggling with learning disabilities has greatly improved their reading and writing abilities through dyslexia treatment. Now they can approach learning with confidence."</span>
+                                    <span lang="ja">"学習障害で学業に困難を感じていた子供が、難読治療を通じて読み書きの能力が大きく向上しました。今では自信を持って学習に取り組めるようになりました。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">조○○ (초등학교 3학년 학부모)</span>
+                                    <span lang="en">Cho ○○ (3rd Grade Elementary School Parent)</span>
+                                    <span lang="ja">チョ○○（小学校3年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"미술치료를 통해 아이의 감정표현이 풍부해졌어요. 이제는 자신의 감정을 그림으로 표현하고 이야기할 수 있게 되었습니다."</span>
+                                    <span lang="en">"My child's emotional expression has become richer through art therapy. Now they can express and talk about their feelings through drawings."</span>
+                                    <span lang="ja">"アートセラピーを通じて、子供の感情表現が豊かになりました。今では自分の感情を絵で表現し、話すことができるようになりました。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">백○○ (초등학교 2학년 학부모)</span>
+                                    <span lang="en">Baek ○○ (2nd Grade Elementary School Parent)</span>
+                                    <span lang="ja">ペク○○（小学校2年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide review-slide">
+                            <div class="review-card">
+                                <p class="review-text">
+                                    <span lang="ko">"모래치료를 통해 아이의 내면세계를 이해할 수 있게 되었어요. 치료 과정에서 아이의 심리적 성장을 직접 목격할 수 있어서 매우 의미있었습니다."</span>
+                                    <span lang="en">"Through sand therapy, I was able to understand my child's inner world. It was very meaningful to witness their psychological growth during the treatment process."</span>
+                                    <span lang="ja">"砂療法を通じて、子供の内面世界を理解できるようになりました。治療過程で子供の心理的成長を直接目撃できて、とても意味のある経験でした。"</span>
+                                </p>
+                                <div class="review-author">
+                                    <span lang="ko">황○○ (초등학교 4학년 학부모)</span>
+                                    <span lang="en">Hwang ○○ (4th Grade Elementary School Parent)</span>
+                                    <span lang="ja">ファン○○（小学校4年生の保護者）</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -2093,12 +2135,26 @@
                 prevEl: '.slider-prev',
             },
             breakpoints: {
+                576: {
+                    slidesPerView: 1,
+                },
                 768: {
                     slidesPerView: 2,
                 },
                 1024: {
                     slidesPerView: 3,
                 },
+                1200: {
+                    slidesPerView: 4,
+                }
+            },
+            on: {
+                init: function () {
+                    this.update();
+                },
+                resize: function () {
+                    this.update();
+                }
             }
         });
 
