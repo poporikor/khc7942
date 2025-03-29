@@ -1,0 +1,50 @@
+/* 컨테이너 최대 너비 제한 */
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* 반응형 컨테이너 */
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* 섹션 패딩 조정 */
+.section-padding {
+    padding: 80px 0;
+}
+
+/* 모바일에서 섹션 패딩 조정 */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+} 
