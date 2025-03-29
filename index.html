@@ -819,6 +819,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="https://blog.naver.com/khcenter" target="_blank">
+                            <span lang="ko">블로그</span>
+                            <span lang="en">Blog</span>
+                            <span lang="ja">ブログ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <select class="language-select" onchange="changeLanguage(this.value)">
                             <option value="ko">한국어</option>
                             <option value="en">English</option>
@@ -1910,6 +1917,123 @@
             });
         });
     </script>
+
+    <!-- 바우처 서비스 섹션 -->
+    <section class="voucher-section" id="voucher">
+        <div class="section-divider-reverse"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span lang="ko">바우처 서비스</span>
+                <span lang="en">Voucher Services</span>
+                <span lang="ja">バウチャーサービス</span>
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up">
+                <span lang="ko">다양한 바우처 서비스를 통해 맞춤형 치료를 지원합니다</span>
+                <span lang="en">We support personalized treatment through various voucher services</span>
+                <span lang="ja">様々なバウチャーサービスを通じて、カスタマイズされた治療をサポートします</span>
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="voucher-card">
+                        <div class="voucher-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>
+                            <span lang="ko">발달재활서비스</span>
+                            <span lang="en">Developmental Rehabilitation Service</span>
+                            <span lang="ja">発達リハビリサービス</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="voucher-card">
+                        <div class="voucher-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>
+                            <span lang="ko">재활치료지원<br>(교육청 바우처)</span>
+                            <span lang="en">Rehabilitation Support<br>(Education Office Voucher)</span>
+                            <span lang="ja">リハビリ治療支援<br>（教育庁バウチャー）</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="voucher-card">
+                        <div class="voucher-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>
+                            <span lang="ko">아동 청소년<br>심리지원서비스</span>
+                            <span lang="en">Children & Youth<br>Psychological Support</span>
+                            <span lang="ja">児童・青少年<br>心理支援サービス</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="voucher-card">
+                        <div class="voucher-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h3>
+                            <span lang="ko">영유아발달지원서비스</span>
+                            <span lang="en">Early Childhood Development Support</span>
+                            <span lang="ja">乳幼児発達支援サービス</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="voucher-card">
+                        <div class="voucher-icon">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3>
+                            <span lang="ko">난독바우처<br>(교육청 난독치료 지원)</span>
+                            <span lang="en">Dyslexia Voucher<br>(Education Office Support)</span>
+                            <span lang="ja">難読バウチャー<br>（教育庁難読治療支援）</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <style>
+        .voucher-section {
+            background-color: var(--background-light);
+            padding: 120px 0;
+        }
+
+        .voucher-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .voucher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .voucher-icon {
+            font-size: 2.5rem;
+            color: var(--mint-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .voucher-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
 </body>
 </html> 
 
