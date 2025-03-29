@@ -158,10 +158,31 @@
         let currentAppointments = [];
         let selectedAppointmentId = null;
 
+        // 페이지 로드 시 인증 체크
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+            loadAppointments();
+        });
+
+        // 로그아웃 함수
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        }
+
         // 페이지 로드 시 예약 목록 가져오기
         async function loadAppointments() {
             try {
-                const response = await fetch('http://54.160.202.243:3000/api/appointments');
+                const response = await fetch('http://54.160.202.243/api/appointments', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'Accept': 'application/json'
+                    }
+                });
                 const data = await response.json();
                 currentAppointments = data;
                 displayAppointments(data);
@@ -239,7 +260,7 @@
             if (!selectedAppointmentId) return;
 
             try {
-                const response = await fetch(`http://54.160.202.243:3000/api/appointments/${selectedAppointmentId}`, {
+                const response = await fetch(`http://54.160.202.243/api/appointments/${selectedAppointmentId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -285,13 +306,7 @@
         // 이벤트 리스너 설정
         document.getElementById('confirmAppointment').addEventListener('click', () => updateAppointmentStatus('confirmed'));
         document.getElementById('cancelAppointment').addEventListener('click', () => updateAppointmentStatus('cancelled'));
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            // 로그아웃 로직 구현
-            window.location.href = 'login.html';
-        });
-
-        // 초기 로드
-        loadAppointments();
+        document.getElementById('logoutBtn').addEventListener('click', logout);
     </script>
 </body>
 </html> 
