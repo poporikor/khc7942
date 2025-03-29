@@ -102,6 +102,11 @@
             box-shadow: var(--shadow-sm);
             padding: 1rem 0;
             transition: var(--transition);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         .navbar.scrolled {
@@ -114,6 +119,10 @@
             max-width: 1320px;
             margin: 0 auto;
             padding: 0 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .brand-logo {
@@ -649,6 +658,10 @@
         /* 모바일 메뉴 스타일 수정 */
         @media (max-width: 991.98px) {
             .navbar {
+                padding: 0.5rem 0;
+            }
+
+            .navbar.scrolled {
                 padding: 0.5rem 0;
             }
 
