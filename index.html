@@ -486,11 +486,22 @@
             background: linear-gradient(135deg, #f8f9fa, #ffffff);
             position: relative;
             padding: 120px 0;
+            width: 100%;
+            overflow: hidden;
         }
 
         .review-section .container {
             max-width: 1320px;
             margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .review-slider {
+            position: relative;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .review-card {
@@ -500,13 +511,24 @@
             box-shadow: var(--shadow-md);
             height: 100%;
             transition: var(--transition);
-            max-width: 400px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
-        .review-slider {
-            position: relative;
-            padding: 0 1rem;
+        .swiper-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        .swiper-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .swiper-slide {
+            width: 100%;
+            max-width: 100%;
         }
 
         .slider-nav {
@@ -542,6 +564,11 @@
         @media (max-width: 768px) {
             .review-card {
                 max-width: 100%;
+                margin: 0 10px;
+            }
+            
+            .swiper-container {
+                padding: 0 10px;
             }
         }
 
