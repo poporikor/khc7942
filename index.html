@@ -642,33 +642,38 @@
 
         /* 모바일 메뉴 스타일 수정 */
         @media (max-width: 991.98px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
             .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
                 background-color: var(--white);
                 padding: 1rem;
-                border-radius: var(--border-radius);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
                 box-shadow: var(--shadow-md);
-                margin-top: 1rem;
+                margin-top: 0;
+                z-index: 1000;
             }
 
             .navbar-nav {
-                flex-direction: column !important;
-                align-items: center;
-                gap: 0.5rem;
+                padding: 0.5rem;
             }
 
             .nav-item {
                 width: 100%;
-                text-align: center;
-                margin: 0.5rem 0;
+                margin: 0.25rem 0;
             }
 
             .nav-link {
-                padding: 0.8rem 1rem !important;
-                margin: 0;
-                border-radius: 20px;
+                padding: 0.75rem 1rem;
+                text-align: center;
+                border-radius: var(--border-radius);
                 background-color: var(--background-light);
-                font-size: 1rem;
-                display: block;
+                transition: var(--transition);
             }
 
             .nav-link:hover {
@@ -678,26 +683,23 @@
 
             .language-select {
                 width: 100%;
-                max-width: 200px;
-                margin: 0.5rem auto;
+                margin: 0.5rem 0;
+                text-align: center;
             }
 
             .navbar-toggler {
-                border: none;
-                padding: 0.5rem;
+                padding: 0.25rem 0.5rem;
+                font-size: 1rem;
+                border: 1px solid var(--mint-color);
+                border-radius: var(--border-radius);
             }
 
             .navbar-toggler:focus {
-                box-shadow: none;
+                box-shadow: 0 0 0 0.2rem rgba(152, 216, 198, 0.25);
             }
 
             .navbar-toggler-icon {
-                background-image: none;
-                position: relative;
-                width: 24px;
-                height: 24px;
-                border: 2px solid var(--mint-color);
-                border-radius: 50%;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28152, 216, 198, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
             }
         }
     </style>
@@ -713,7 +715,7 @@
                     <span class="brand-text secondary">지원센터</span>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -1716,9 +1718,9 @@
         }
     </style>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation JS -->
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
