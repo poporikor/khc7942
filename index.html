@@ -643,49 +643,61 @@
         /* 모바일 메뉴 스타일 수정 */
         @media (max-width: 991.98px) {
             .navbar-collapse {
-                display: block !important;
                 background-color: var(--white);
                 padding: 1rem;
                 border-radius: var(--border-radius);
-                box-shadow: var(--shadow-sm);
+                box-shadow: var(--shadow-md);
                 margin-top: 1rem;
             }
 
             .navbar-nav {
-                flex-direction: row !important;
-                justify-content: center;
-                flex-wrap: wrap;
+                flex-direction: column !important;
+                align-items: center;
                 gap: 0.5rem;
             }
 
             .nav-item {
-                margin: 0.2rem 0.5rem;
+                width: 100%;
+                text-align: center;
+                margin: 0.5rem 0;
             }
 
             .nav-link {
-                padding: 0.5rem 1rem !important;
+                padding: 0.8rem 1rem !important;
                 margin: 0;
                 border-radius: 20px;
                 background-color: var(--background-light);
-                font-size: 0.9rem;
+                font-size: 1rem;
+                display: block;
             }
 
             .nav-link:hover {
                 background-color: var(--mint-light);
-                color: var(--white);
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-
-            .navbar-toggler {
-                display: none;
+                color: var(--mint-dark);
             }
 
             .language-select {
-                margin-top: 0;
-                font-size: 0.9rem;
+                width: 100%;
+                max-width: 200px;
+                margin: 0.5rem auto;
+            }
+
+            .navbar-toggler {
+                border: none;
+                padding: 0.5rem;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+
+            .navbar-toggler-icon {
+                background-image: none;
+                position: relative;
+                width: 24px;
+                height: 24px;
+                border: 2px solid var(--mint-color);
+                border-radius: 50%;
             }
         }
     </style>
@@ -695,75 +707,36 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand brand-logo" href="#">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 원형 배경 -->
-                    <circle cx="50" cy="50" r="45" fill="#FFE5E0"/>
-                    <!-- 얼굴 윤곽 -->
-                    <path d="M35 35 C35 35, 50 30, 65 35 C75 40, 75 60, 65 65 C50 70, 35 70, 35 65 C25 60, 25 40, 35 35" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
-                    <!-- 눈 -->
-                    <circle cx="43" cy="48" r="2" fill="#2C3E50"/>
-                    <circle cx="57" cy="48" r="2" fill="#2C3E50"/>
-                    <!-- 머리카락 -->
-                    <path d="M35 38 C35 38, 50 33, 65 38" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
-                    <!-- 말풍선 -->
-                    <path d="M75 15 C85 15, 90 20, 90 30 C90 40, 85 45, 75 45 C65 45, 60 40, 60 30 C60 20, 65 15, 75 15" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
-                    <path d="M65 40 L60 50 L68 42" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
-                    <!-- 말풍선 안의 점들 -->
-                    <circle cx="70" cy="30" r="2" fill="#2C3E50"/>
-                    <circle cx="75" cy="30" r="2" fill="#2C3E50"/>
-                    <circle cx="80" cy="30" r="2" fill="#2C3E50"/>
-                </svg>
+                <span class="brand-emoji">🌱</span>
                 <div class="brand-text-container">
-                    <span class="brand-text primary">경희</span>
-                    <span class="brand-text secondary">언어심리지원센터</span>
+                    <span class="brand-text primary">경희언어심리</span>
+                    <span class="brand-text secondary">지원센터</span>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav me-3">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">
-                            <span lang="ko">홈</span>
-                            <span lang="en">Home</span>
-                            <span lang="ja">ホーム</span>
-                        </a>
+                        <a class="nav-link" href="#about">센터소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">
-                            <span lang="ko">센터소개</span>
-                            <span lang="en">About</span>
-                            <span lang="ja">センター紹介</span>
-                        </a>
+                        <a class="nav-link" href="#services">서비스</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">
-                            <span lang="ko">프로그램</span>
-                            <span lang="en">Programs</span>
-                            <span lang="ja">プログラム</span>
-                        </a>
+                        <a class="nav-link" href="#reviews">후기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#reviews">
-                            <span lang="ko">상담후기</span>
-                            <span lang="en">Reviews</span>
-                            <span lang="ja">カウンセリング後記</span>
-                        </a>
+                        <a class="nav-link" href="#counseling">상담예약</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#counseling">
-                            <span lang="ko">상담예약</span>
-                            <span lang="en">Appointment</span>
-                            <span lang="ja">予約</span>
-                        </a>
+                        <select class="language-select" onchange="changeLanguage(this.value)">
+                            <option value="ko">한국어</option>
+                            <option value="en">English</option>
+                        </select>
                     </li>
                 </ul>
-                <select class="language-select" onchange="changeLanguage(this.value)">
-                    <option value="ko">한국어</option>
-                    <option value="en">English</option>
-                    <option value="ja">日本語</option>
-                </select>
             </div>
         </div>
     </nav>
