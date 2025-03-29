@@ -642,30 +642,24 @@
 
         /* 모바일 메뉴 스타일 수정 */
         @media (max-width: 991.98px) {
-            .navbar {
-                padding: 0.5rem 1rem;
-            }
-
             .navbar-collapse {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
                 background-color: var(--white);
                 padding: 1rem;
-                border-radius: 0 0 var(--border-radius) var(--border-radius);
+                border-radius: var(--border-radius);
                 box-shadow: var(--shadow-md);
-                margin-top: 0;
-                z-index: 1000;
+                margin-top: 1rem;
             }
 
             .navbar-nav {
-                padding: 0.5rem;
+                flex-direction: column !important;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .nav-item {
                 width: 100%;
-                margin: 0.25rem 0;
+                text-align: center;
+                margin: 0.5rem 0;
             }
 
             .nav-link {
@@ -709,10 +703,27 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand brand-logo" href="#">
-                <span class="brand-emoji">🌱</span>
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 원형 배경 -->
+                    <circle cx="50" cy="50" r="45" fill="#FFE5E0"/>
+                    <!-- 얼굴 윤곽 -->
+                    <path d="M35 35 C35 35, 50 30, 65 35 C75 40, 75 60, 65 65 C50 70, 35 70, 35 65 C25 60, 25 40, 35 35" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                    <!-- 눈 -->
+                    <circle cx="43" cy="48" r="2" fill="#2C3E50"/>
+                    <circle cx="57" cy="48" r="2" fill="#2C3E50"/>
+                    <!-- 머리카락 -->
+                    <path d="M35 38 C35 38, 50 33, 65 38" fill="none" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+                    <!-- 말풍선 -->
+                    <path d="M75 15 C85 15, 90 20, 90 30 C90 40, 85 45, 75 45 C65 45, 60 40, 60 30 C60 20, 65 15, 75 15" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                    <path d="M65 40 L60 50 L68 42" fill="#B4E3D7" stroke="#2C3E50" stroke-width="2"/>
+                    <!-- 말풍선 안의 점들 -->
+                    <circle cx="70" cy="30" r="2" fill="#2C3E50"/>
+                    <circle cx="75" cy="30" r="2" fill="#2C3E50"/>
+                    <circle cx="80" cy="30" r="2" fill="#2C3E50"/>
+                </svg>
                 <div class="brand-text-container">
-                    <span class="brand-text primary">경희언어심리</span>
-                    <span class="brand-text secondary">지원센터</span>
+                    <span class="brand-text primary">경희</span>
+                    <span class="brand-text secondary">언어심리지원센터</span>
                 </div>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
