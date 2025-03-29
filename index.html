@@ -487,6 +487,7 @@
             position: relative;
             padding: 120px 0;
             width: 100%;
+            overflow: hidden;
         }
 
         .review-section .container {
@@ -498,8 +499,8 @@
 
         .review-slider {
             position: relative;
-            padding: 0;
             width: 100%;
+            overflow: hidden;
         }
 
         .review-card {
@@ -511,22 +512,31 @@
             transition: var(--transition);
             margin: 0 15px;
             max-width: calc(100% - 30px);
+            display: flex;
+            flex-direction: column;
         }
 
         .swiper-container {
             width: 100%;
             padding: 20px 40px;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .swiper-wrapper {
             display: flex;
             align-items: stretch;
+            transition-timing-function: ease-out;
         }
 
         .swiper-slide {
             height: auto;
             display: flex;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
         }
 
         .slider-nav {
@@ -2125,6 +2135,8 @@
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
+            loopAdditionalSlides: 1,
+            speed: 800,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -2176,7 +2188,7 @@
         });
 
         // 상담 예약 폼 제출
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // 폼 데이터 수집
@@ -2184,32 +2196,32 @@
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
-                preferredDate: document.getElementById('preferredDate').value,
+                date: document.getElementById('preferredDate').value,
+                time: document.getElementById('preferredTime').value,
                 counselingType: document.getElementById('counselingType').value,
                 message: document.getElementById('message').value
             };
 
-            // AJAX 요청
-            fetch('send_email.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(data.message);
+            try {
+                const response = await fetch('http://54.160.202.243:3000/api/appointments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    alert('상담 예약이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
                     this.reset();
                 } else {
-                    alert(data.message);
+                    alert('예약 중 오류가 발생했습니다: ' + result.error);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
                 alert('상담 예약 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
-            });
+            }
         });
 
         // 부드러운 스크롤 이동
