@@ -350,22 +350,52 @@
         .about-section {
             background-color: var(--white);
             position: relative;
+            text-align: center;
         }
 
-        .about-image {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
+        .about-content {
+            text-align: center;
         }
 
-        .about-image img {
-            width: 100%;
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-feature {
+            background-color: var(--background-light);
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             transition: var(--transition);
+            text-align: center;
         }
 
-        .about-image:hover img {
-            transform: scale(1.05);
+        .about-feature i {
+            font-size: 2rem;
+            color: var(--mint-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about-feature h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .about-feature p {
+            color: var(--text-light);
+            margin-bottom: 0;
+            text-align: center;
         }
 
         .about-experience {
@@ -378,6 +408,8 @@
             border-radius: var(--border-radius);
             text-align: center;
             box-shadow: var(--shadow-lg);
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .about-experience .number {
@@ -385,46 +417,13 @@
             font-weight: 700;
             line-height: 1;
             display: block;
+            text-align: center;
         }
 
         .about-experience .text {
             font-size: 0.9rem;
             opacity: 0.9;
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .about-feature {
-            background-color: var(--background-light);
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .about-feature:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .about-feature i {
-            font-size: 2rem;
-            color: var(--mint-color);
-            margin-bottom: 1rem;
-        }
-
-        .about-feature h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .about-feature p {
-            color: var(--text-light);
-            margin-bottom: 0;
+            text-align: center;
         }
 
         .stats-card {
@@ -436,15 +435,11 @@
             transition: var(--transition);
         }
 
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
         .stats-icon {
             font-size: 2.5rem;
             color: var(--mint-color);
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .stats-number {
@@ -452,27 +447,22 @@
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .stats-text {
             color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 0;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
-            .hero-buttons {
-                flex-direction: column;
-            }
-
             .about-experience {
                 bottom: 20px;
                 right: 20px;
                 padding: 15px;
-            }
-
-            .about-content {
-                margin-top: 2rem;
+                width: 80%;
             }
         }
 
@@ -1697,6 +1687,25 @@
                                 <input type="date" class="form-control" id="preferredDate" name="preferredDate" required>
                             </div>
                             <div class="mb-3">
+                                <label for="preferredTime" class="form-label">
+                                    <span lang="ko">희망 시간</span>
+                                    <span lang="en">Preferred Time</span>
+                                    <span lang="ja">希望時間</span>
+                                </label>
+                                <select class="form-control" id="preferredTime" name="preferredTime" required>
+                                    <option value="">선택해주세요</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="counselingType" class="form-label">
                                     <span lang="ko">상담 유형</span>
                                     <span lang="en">Consultation Type</span>
@@ -1953,156 +1962,6 @@
         </div>
     </footer>
 
-    <style>
-        .footer-section {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 5rem 0 0;
-        }
-
-        .footer-info {
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--white);
-        }
-
-        .footer-logo .brand-emoji {
-            font-size: 2rem;
-        }
-
-        .footer-logo .brand-text {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--mint-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-section h4 {
-            color: var(--white);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--mint-color);
-            padding-left: 5px;
-        }
-
-        .footer-hours {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-hours li {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .footer-contact {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-contact li {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .footer-contact i {
-            color: var(--mint-color);
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            color: rgba(255,255,255,0.6);
-        }
-
-        .footer-bottom a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-bottom a:hover {
-            color: var(--mint-color);
-        }
-
-        @media (max-width: 768px) {
-            .footer-info {
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .footer-bottom {
-                text-align: center;
-            }
-
-            .footer-bottom .text-md-end {
-                text-align: center !important;
-                margin-top: 1rem;
-            }
-        }
-    </style>
-
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS Animation -->
@@ -2191,36 +2050,68 @@
         document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // 폼 데이터 수집
+            // 폼 데이터 유효성 검사
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('preferredDate').value;
+            const time = document.getElementById('preferredTime').value;
+            const counselingType = document.getElementById('counselingType').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !phone || !email || !date || !time || !counselingType) {
+                alert('모든 필수 항목을 입력해주세요.');
+                return;
+            }
+
             const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                date: document.getElementById('preferredDate').value,
-                time: document.getElementById('preferredTime').value,
-                counselingType: document.getElementById('counselingType').value,
-                message: document.getElementById('message').value
+                name,
+                phone,
+                email,
+                date,
+                time,
+                counselingType,
+                message,
+                status: 'pending'
             };
 
             try {
+                // 타임아웃 설정과 함께 fetch 요청
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10초 타임아웃
+
                 const response = await fetch('http://54.160.202.243:3000/api/appointments', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(formData),
+                    signal: controller.signal
                 });
+
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || `예약 처리 중 오류가 발생했습니다. (상태 코드: ${response.status})`);
+                }
                 
                 const result = await response.json();
                 if (result.success) {
                     alert('상담 예약이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
                     this.reset();
                 } else {
-                    alert('예약 중 오류가 발생했습니다: ' + result.error);
+                    throw new Error(result.error || '예약 처리 중 오류가 발생했습니다.');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('상담 예약 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                if (error.name === 'AbortError') {
+                    alert('서버 응답 시간이 초과되었습니다. 잠시 후 다시 시도해주세요.');
+                } else {
+                    alert('상담 예약 중 오류가 발생했습니다: ' + error.message);
+                }
             }
         });
 
