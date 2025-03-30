@@ -925,6 +925,12 @@
                 padding: 0.5rem;
             }
 
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+
             .navbar-nav {
                 flex-wrap: nowrap;
                 overflow-x: auto;
@@ -2117,13 +2123,37 @@
             }
         });
 
-        // 스크롤시 네비게이션 바 스타일 변경
+        // 스크롤시 네비게이션 바 스타일 변경 및 메뉴 접기
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+            }
+            
+            // 스크롤 시 메뉴 접기
+            if (navbarCollapse.classList.contains('show')) {
+                bootstrap.Collapse.getInstance(navbarCollapse).hide();
+            }
+        });
+
+        // 메뉴 항목 클릭시 자동으로 접히게 설정
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                }
+            });
+        });
+
+        // 언어 선택 시에도 메뉴 접기
+        document.querySelector('.language-select').addEventListener('change', () => {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                bootstrap.Collapse.getInstance(navbarCollapse).hide();
             }
         });
 
