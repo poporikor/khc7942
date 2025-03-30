@@ -36,6 +36,23 @@
             scroll-behavior: smooth;
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .section-padding {
@@ -262,6 +279,7 @@
             min-height: 100vh;
             background: var(--mint-gradient);
             overflow: hidden;
+            width: 100%;
         }
 
         .hero-background {
@@ -923,6 +941,20 @@
                 padding: 0.3rem 1rem;
                 font-size: 0.85rem;
             }
+
+            .hero-background {
+                background-attachment: scroll;
+                padding: 150px 0 80px;
+            }
+
+            .container {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+
+            .nav-link {
+                margin: 0 0.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -935,6 +967,14 @@
 
             .nav-link {
                 white-space: nowrap;
+            }
+
+            .container {
+                padding: 0 0.8rem;
+            }
+
+            .hero-background {
+                padding: 130px 0 60px;
             }
         }
     </style>
