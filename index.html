@@ -107,6 +107,7 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            overflow-x: hidden;
         }
 
         .navbar.scrolled {
@@ -885,12 +886,51 @@
         }
 
         @media (max-width: 991px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+
             .navbar .container {
                 padding: 0 0.5rem;
             }
-            
+
             .navbar-nav {
                 gap: 0.5rem;
+                width: 100%;
+                justify-content: flex-end;
+                padding: 0.5rem;
+            }
+
+            .brand-logo {
+                font-size: 0.9rem;
+            }
+
+            .brand-text.primary,
+            .brand-text.secondary {
+                font-size: 0.9rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+                margin: 0 0.5rem;
+            }
+
+            .language-select {
+                padding: 0.3rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-nav {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+
+            .nav-link {
+                white-space: nowrap;
             }
         }
     </style>
