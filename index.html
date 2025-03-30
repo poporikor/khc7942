@@ -100,18 +100,17 @@
         .navbar {
             background-color: rgba(255, 255, 255, 0.98);
             box-shadow: var(--shadow-sm);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             transition: var(--transition);
-            width: 100%;
             position: fixed;
             top: 0;
             left: 0;
+            right: 0;
             z-index: 1000;
             overflow-x: hidden;
         }
 
         .navbar.scrolled {
-            padding: 0.8rem 0;
             background-color: rgba(255, 255, 255, 0.98);
             box-shadow: var(--shadow-md);
         }
@@ -120,7 +119,6 @@
             max-width: 1320px;
             margin: 0 auto;
             padding: 0 1rem;
-            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -891,11 +889,13 @@
 
         @media (max-width: 991px) {
             .navbar {
-                padding: 0.5rem 0;
+                padding: 0.8rem 0;
             }
-
+            
             .navbar .container {
-                padding: 0 0.5rem;
+                padding: 0 1rem;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .navbar-nav {
