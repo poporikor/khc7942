@@ -1753,124 +1753,74 @@
                 </div>
                 <div class="col-lg-8" data-aos="fade-left">
                     <div class="counseling-form">
-                        <form id="appointmentForm">
+                        <form id="appointmentForm" class="appointment-form">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">
-                                            <span lang="ko">이름</span>
-                                            <span lang="en">Name</span>
-                                            <span lang="ja">お名前</span>
-                                        </label>
-                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        <label for="name" class="form-label">이름</label>
+                                        <input type="text" class="form-control" id="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="phone" class="form-label">
-                                            <span lang="ko">연락처</span>
-                                            <span lang="en">Phone</span>
-                                            <span lang="ja">連絡先</span>
-                                        </label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                        <label for="phone" class="form-label">연락처</label>
+                                        <input type="tel" class="form-control" id="phone" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">
-                                    <span lang="ko">이메일</span>
-                                    <span lang="en">Email</span>
-                                    <span lang="ja">メール</span>
-                                </label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="email" class="form-label">이메일</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="date" class="form-label">예약일</label>
+                                        <input type="date" class="form-control" id="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="time" class="form-label">예약시간</label>
+                                        <select class="form-control" id="time" required>
+                                            <option value="">선택해주세요</option>
+                                            <option value="09:00">09:00</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <label for="preferredDate" class="form-label">
-                                    <span lang="ko">희망 상담일</span>
-                                    <span lang="en">Preferred Date</span>
-                                    <span lang="ja">希望日</span>
-                                </label>
-                                <input type="date" class="form-control" id="preferredDate" name="preferredDate" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="preferredTime" class="form-label">
-                                    <span lang="ko">희망 시간</span>
-                                    <span lang="en">Preferred Time</span>
-                                    <span lang="ja">希望時間</span>
-                                </label>
-                                <select class="form-control" id="preferredTime" name="preferredTime" required>
+                                <label for="counselingType" class="form-label">상담 유형</label>
+                                <select class="form-control" id="counselingType" required>
                                     <option value="">선택해주세요</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="17:00">17:00</option>
+                                    <option value="language">언어치료</option>
+                                    <option value="psychology">심리상담</option>
+                                    <option value="art">미술치료</option>
+                                    <option value="sand">모래치료</option>
+                                    <option value="group">그룹프로그램</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="counselingType" class="form-label">
-                                    <span lang="ko">상담 유형</span>
-                                    <span lang="en">Consultation Type</span>
-                                    <span lang="ja">カウンセリング種類</span>
-                                </label>
-                                <select class="form-control" id="counselingType" name="counselingType" required>
-                                    <option value="">
-                                        <span lang="ko">선택해주세요</span>
-                                        <span lang="en">Please select</span>
-                                        <span lang="ja">選択してください</span>
-                                    </option>
-                                    <option value="language">
-                                        <span lang="ko">언어치료</span>
-                                        <span lang="en">Speech Therapy</span>
-                                        <span lang="ja">言語療法</span>
-                                    </option>
-                                    <option value="psychology">
-                                        <span lang="ko">심리상담</span>
-                                        <span lang="en">Psychological Counseling</span>
-                                        <span lang="ja">心理カウンセリング</span>
-                                    </option>
-                                    <option value="art">
-                                        <span lang="ko">미술치료</span>
-                                        <span lang="en">Art Therapy</span>
-                                        <span lang="ja">アートセラピー</span>
-                                    </option>
-                                    <option value="sand">
-                                        <span lang="ko">모래치료</span>
-                                        <span lang="en">Sand Therapy</span>
-                                        <span lang="ja">砂療法</span>
-                                    </option>
-                                    <option value="group">
-                                        <span lang="ko">그룹프로그램</span>
-                                        <span lang="en">Group Program</span>
-                                        <span lang="ja">グループプログラム</span>
-                                    </option>
-                                </select>
+                                <label for="message" class="form-label">상담 내용</label>
+                                <textarea class="form-control" id="message" rows="4"></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">
-                                    <span lang="ko">상담 내용</span>
-                                    <span lang="en">Message</span>
-                                    <span lang="ja">相談内容</span>
-                                </label>
-                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                            </div>
-                            <div class="form-check">
+                            <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="privacy" required>
                                 <label class="form-check-label" for="privacy">
-                                    <span lang="ko">개인정보 수집 및 이용에 동의합니다.</span>
-                                    <span lang="en">I agree to the collection and use of personal information.</span>
-                                    <span lang="ja">個人情報の収集及び利用に同意します。</span>
+                                    개인정보 수집 및 이용에 동의합니다.
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-mint w-100">
                                 <i class="fas fa-paper-plane me-2"></i>
-                                <span lang="ko">상담 예약하기</span>
-                                <span lang="en">Book Appointment</span>
-                                <span lang="ja">予約する</span>
+                                상담 예약하기
                             </button>
                         </form>
                     </div>
@@ -2184,8 +2134,8 @@
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
-            const date = document.getElementById('preferredDate').value;
-            const time = document.getElementById('preferredTime').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
             const counselingType = document.getElementById('counselingType').value;
             const message = document.getElementById('message').value;
 
@@ -2294,6 +2244,42 @@
             line-height: 1.5;
         }
     </style>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                counselingType: document.getElementById('counselingType').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                const response = await fetch('http://18.215.179.107:3000/api/appointments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert('예약이 성공적으로 접수되었습니다.');
+                    document.getElementById('appointmentForm').reset();
+                } else {
+                    alert('예약 접수 중 오류가 발생했습니다: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('예약 접수 중 오류가 발생했습니다.');
+            }
+        });
+    </script>
 </body>
 </html> 
 
